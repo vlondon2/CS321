@@ -26,4 +26,8 @@ public class DataEntry {
     public void setBeneficiaryLastName(String lastName) {
         newPetition.setBeneficiaryLastName(lastName);
     }
+
+    private boolean submitPetition() {
+
+    }
 }
