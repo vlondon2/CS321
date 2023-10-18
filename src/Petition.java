@@ -38,7 +38,7 @@ public class Petition {
         return petitionerLastName;
     }
 
-    public void setaNumber(String aNumber) {
+    public void setANumber(String aNumber) {
         this.aNumber = aNumber;
     }
 

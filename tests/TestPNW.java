@@ -16,15 +16,15 @@ public class TestPNW {
 
     @Test
     public void testValidateEntry() {
-        int result = pnw.validateEntry();
+        boolean result = pnw.validateEntry();
 
-        assertEquals(1, result);
+        assertTrue(result);
     }
 
     @Test
     public void testAddToWorkflow() {
-        int result = pnw.addToWorkflow();
+        boolean result = pnw.addToWorkflow();
 
-        assertEquals(1, result);
+        assertTrue(result);
     }
 }

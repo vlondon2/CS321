@@ -4,40 +4,36 @@ public class PNW {
 
     private final Petition newPetition;
     private final Workflow workflow;
-    private int validateReturn;
+    private boolean validateReturn;
 
     public PNW() {
         this.newPetition = new Petition();
         this.workflow = new Workflow();
     }
 
-    public int validateEntry() {
-        validateReturn = 1;
+    public boolean validateEntry() {
 
-        if (isEmptyOrNull(newPetition.getPetitionerFirstName())
-                || isEmptyOrNull(newPetition.getPetitionerLastName())
-                || isEmptyOrNull(newPetition.getaNumber())
-                || isEmptyOrNull(newPetition.getBeneficiaryFirstName())
-                || isEmptyOrNull(newPetition.getBeneficiaryLastName())
-                || isDobInRange(newPetition.getDobYear(), newPetition.getDobMonth(), newPetition.getDobDay())) {
-
-            validateReturn = 0;
-        }
+        validateReturn = isNotEmptyOrNull(newPetition.getPetitionerFirstName())
+                && isNotEmptyOrNull(newPetition.getPetitionerLastName())
+                && isNotEmptyOrNull(newPetition.getaNumber())
+                && isNotEmptyOrNull(newPetition.getBeneficiaryFirstName())
+                && isNotEmptyOrNull(newPetition.getBeneficiaryLastName())
+                && !isDobInRange(newPetition.getDobYear(), newPetition.getDobMonth(), newPetition.getDobDay());
 
         return validateReturn;
     }
 
-    public int addToWorkflow() {
-        if (validateReturn == 1) {
+    public boolean addToWorkflow() {
+        if (validateReturn) {
             //workflow.addToApprovalQueue();
-            return 1;
+            return true;
         }
 
-        return 0;
+        return false;
     }
 
-    private boolean isEmptyOrNull(String string) {
-        return string == null || string.isEmpty();
+    private boolean isNotEmptyOrNull(String string) {
+        return string != null && !string.isEmpty();
     }
 
     private boolean isDobInRange(int year, int month, int day) {
@@ -46,13 +42,10 @@ public class PNW {
         }
 
         if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
-
             return day > 0 && day <= 31;
 
         } else if (month == 2) {
-
             if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
-
                 return day > 0 && day <= 29;
             }
             else {

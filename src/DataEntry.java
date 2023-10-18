@@ -15,7 +15,7 @@ public class DataEntry {
     }
 
     private void setANumber(String aNumber) {
-        newPetition.setaNumber(aNumber);
+        newPetition.setANumber(aNumber);
     }
 
     private void setBeneficiaryFirstName(String firstName) {

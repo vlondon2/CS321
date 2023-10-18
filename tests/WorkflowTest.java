@@ -1,6 +1,5 @@
 package tests;
 
-import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import org.junit.*;
 
@@ -9,17 +8,20 @@ import src.Workflow;
 
 public class WorkflowTest {
     private Workflow workflow;
+    private Petition newPetition;
 
+    /**
+     * Before each test, create a workflow and petition object
+     */
     @Before // create a new workflow object to test with
-    public void create() {
+    public void createObjectsForTests() {
         workflow = new Workflow();
+        newPetition = new Petition();
     }
 
     /**
-     * testAddToReviewQueue()
-     *
-     * parameters:
-     *
+     * test name:  testAddToReviewQueue()
+     * parameters: none
      * Notes:
      *  This test creates a new petition to add to the review queue.
      *  It stores the size before and after adding object to queue.
@@ -27,19 +29,16 @@ public class WorkflowTest {
      */
     @Test
     public void testAddToReviewQueue() {
-        Petition newPetition = new Petition();
-
         int currentSize = workflow.getReviewQueue().size();
+        workflow.addToReviewQueue(newPetition);
         int newSize = workflow.getReviewQueue().size();
 
         assertEquals(currentSize + 1, newSize);
     }
 
     /**
-     * testAddToRApprovalQueue()
-     *
-     * parameters:
-     *
+     * test name:  testAddToRApprovalQueue()
+     * parameters: none
      * Notes:
      *  This test creates a new petition to add to the approval queue.
      *  It stores the size before and after adding object to queue.
@@ -47,19 +46,16 @@ public class WorkflowTest {
      */
     @Test
     public void testAddToApprovalQueue() {
-        Petition newPetition = new Petition();
-
         int currentSize = workflow.getApprovalQueue().size();
+        workflow.addToApprovalQueue(newPetition);
         int newSize = workflow.getApprovalQueue().size();
 
         assertEquals(currentSize + 1, newSize);
     }
 
     /**
-     * testRemoveFromReviewQueue()
-     *
-     * parameters:
-     *
+     * test name:  testRemoveFromReviewQueue()
+     * parameters: none
      * Notes:
      *  This test creates a new petition to add to the review queue.
      *  It stores the size after adding the object to the queue.
@@ -70,24 +66,17 @@ public class WorkflowTest {
      */
     @Test
     public void testRemoveFromReviewQueue() {
-        Petition newPetition = new Petition();
-
         workflow.addToReviewQueue(newPetition);
-
         int currentSize = workflow.getReviewQueue().size();
-
         workflow.removeFromReviewQueue();
-
         int newSize = workflow.getReviewQueue().size();
 
         assertEquals(currentSize - 1, newSize);
     }
 
     /**
-     * testRemoveFromApprovalQueue()
-     *
-     * parameters:
-     *
+     * test name:  testRemoveFromApprovalQueue()
+     * parameters: none
      * Notes:
      *  This test creates a new petition to add to the approval queue.
      *  It stores the size after adding the object to the queue.
@@ -98,14 +87,9 @@ public class WorkflowTest {
      */
     @Test
     public void testRemoveFromApprovalQueue() {
-        Petition newPetition = new Petition();
-
         workflow.addToApprovalQueue(newPetition);
-
         int currentSize = workflow.getApprovalQueue().size();
-
         workflow.removeFromApprovalQueue();
-
         int newSize = workflow.getApprovalQueue().size();
 
         assertEquals(currentSize - 1, newSize);
