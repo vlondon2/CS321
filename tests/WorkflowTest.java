@@ -3,6 +3,7 @@ package tests;
 import static org.junit.Assert.*;
 import org.junit.*;
 
+import src.Petition;
 import src.Workflow;
 
 public class WorkflowTest {
@@ -25,11 +26,9 @@ public class WorkflowTest {
      */
     @Test
     public void testAddToReviewQueue() {
+        Petition newPetition = new Petition();
+
         int currentSize = workflow.getReviewQueue().size();
-<<<<<<< Updated upstream
-        int returnResult = workflow.addToReviewQueue();
-=======
->>>>>>> Stashed changes
         int newSize = workflow.getReviewQueue().size();
 
         assertEquals(currentSize + 1, newSize);
@@ -47,17 +46,13 @@ public class WorkflowTest {
      */
     @Test
     public void testAddToApprovalQueue() {
+        Petition newPetition = new Petition();
+
         int currentSize = workflow.getApprovalQueue().size();
-<<<<<<< Updated upstream
-        int returnResult = workflow.addToApprovalQueue();
-=======
->>>>>>> Stashed changes
         int newSize = workflow.getApprovalQueue().size();
 
         assertEquals(currentSize + 1, newSize);
     }
-<<<<<<< Updated upstream
-=======
 
     /**
      * testRemoveFromReviewQueue()
@@ -114,5 +109,5 @@ public class WorkflowTest {
 
         assertEquals(currentSize - 1, newSize);
     }
->>>>>>> Stashed changes
 }
+

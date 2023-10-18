@@ -12,20 +12,26 @@ public class Workflow {
         approvalQueue = new LinkedList<>();
     }
 
-    public int addToReviewQueue() {
+    public int addToReviewQueue(Petition petition) {
+        //reviewQueue.add(petition);
         return 0;
     }
 
-    public int addToApprovalQueue() {
+    public int addToApprovalQueue(Petition petition) {
+        //approvalQueue.add(petition);
         return 0;
     }
 
-    public int removeFromReviewQueue() {
-        return 0;
+    public Petition removeFromReviewQueue() {
+
+        //return reviewQueue.remove();
+        return null;
     }
 
-    public int removeFromApprovalQueue() {
-        return 0;
+    public Petition removeFromApprovalQueue() {
+
+        //return approvalQueue.remove();
+        return null;
     }
 
     public Queue<Petition> getReviewQueue() {
