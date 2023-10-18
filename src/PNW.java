@@ -47,20 +47,20 @@ public class PNW {
 
         if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
 
-            return day >= 0 && day <= 31;
+            return day > 0 && day <= 31;
 
         } else if (month == 2) {
 
             if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
 
-                return day >= 0 && day <= 29;
+                return day > 0 && day <= 29;
             }
             else {
-                return day >= 0 && day <= 28;
+                return day > 0 && day <= 28;
             }
         }
         else {
-            return day >= 0 && day <= 30;
+            return day > 0 && day <= 30;
         }
     }
 }

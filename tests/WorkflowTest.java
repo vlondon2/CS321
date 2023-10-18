@@ -1,5 +1,6 @@
 package tests;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import org.junit.*;
 
