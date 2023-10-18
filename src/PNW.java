@@ -10,7 +10,7 @@ public class PNW {
         this.newPetition = new Petition();
         this.workflow = new Workflow();
     }
-    
+
     public int validateEntry() {
         validateReturn = 1;
 

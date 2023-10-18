@@ -1,7 +1,7 @@
 package src;
 
 public class Petition {
-    
+
     private String petitionerFirstName;
     private String petitionerLastName;
     private String aNumber;
