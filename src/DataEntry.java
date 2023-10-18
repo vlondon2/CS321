@@ -1,33 +1,52 @@
 package src;
 
 public class DataEntry {
-    private Petition newPetition = new Petition();
+    private Petition newPetition;
 
-    public Petition getNewPetition() {
-        return newPetition;
+    public DataEntry() {
+        newPetition = new Petition();
     }
-
-    public void setPetitionerFirstName(String firstName) {
+    private void setPetitionerFirstName(String firstName) {
         newPetition.setPetitionerFirstName(firstName);
     }
 
-    public void setPetitionerLastName(String lastName) {
+    private void setPetitionerLastName(String lastName) {
         newPetition.setPetitionerLastName(lastName);
     }
 
-    public void setANumber(String aNumber) {
+    private void setANumber(String aNumber) {
         newPetition.setaNumber(aNumber);
     }
 
-    public void setBeneficiaryFirstName(String firstName) {
+    private void setBeneficiaryFirstName(String firstName) {
         newPetition.setBeneficiaryFirstName(firstName);
     }
 
-    public void setBeneficiaryLastName(String lastName) {
+    private void setBeneficiaryLastName(String lastName) {
         newPetition.setBeneficiaryLastName(lastName);
     }
 
-    private boolean submitPetition() {
+    private void setDobYear(int year) {
+        newPetition.setDobYear(year);
+    }
 
+    private void setDobMonth(int month) {
+        newPetition.setDobMonth(month);
+    }
+
+    private void setDobDay(int day) {
+        newPetition.setDobDay(day);
+    }
+
+    private boolean checkStatus() {
+        return false;
+    }
+
+    private boolean submitPetition() {
+        return false;
+    }
+
+    private void clearScreen() {
+        newPetition = new Petition();
     }
 }
