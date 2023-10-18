@@ -25,7 +25,7 @@ public class PNW {
 
     public boolean addToWorkflow() {
         if (validateReturn) {
-            //workflow.addToApprovalQueue();
+            //workflow.addToApprovalQueue(newPetition);
             return true;
         }
 

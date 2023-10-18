@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Workflow {
-    private Queue<Petition> reviewQueue;
-    private Queue<Petition> approvalQueue;
+    private Queue<String> reviewQueue;
+    private Queue<String> approvalQueue;
 
     public Workflow() {
         reviewQueue = new LinkedList<>();
@@ -34,11 +34,11 @@ public class Workflow {
         return null;
     }
 
-    public Queue<Petition> getReviewQueue() {
+    public Queue<String> getReviewQueue() {
         return reviewQueue;
     }
 
-    public Queue<Petition> getApprovalQueue() {
+    public Queue<String> getApprovalQueue() {
         return approvalQueue;
     }
 }

@@ -6,6 +6,8 @@ import org.junit.*;
 import src.Petition;
 import src.Workflow;
 
+import java.util.Queue;
+
 public class WorkflowTest {
     private Workflow workflow;
     private Petition newPetition;
