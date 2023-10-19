@@ -1,26 +1,56 @@
 package src;
 
+import java.util.*;
+
 public class PNW {
 
-    private final Petition newPetition;
+    //private final Petition newPetition;
     private final Workflow workflow;
+    private Database database;
+    private ArrayList<Petition> list;
     private boolean validateReturn;
 
     public PNW() {
-        this.newPetition = new Petition();
+        //this.newPetition = new Petition();
         this.workflow = new Workflow();
+        this.database = new Database();
+        this.list = database.getDatabase();
     }
 
-    public boolean validateEntry() {
+    public boolean checkDatabase(String aNumber) {
+        for (Petition petition:
+                list) {
+            if (petition.getaNumber().equals(aNumber)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-        validateReturn = isNotEmptyOrNull(newPetition.getPetitionerFirstName())
-                && isNotEmptyOrNull(newPetition.getPetitionerLastName())
-                && isNotEmptyOrNull(newPetition.getaNumber())
-                && isNotEmptyOrNull(newPetition.getBeneficiaryFirstName())
-                && isNotEmptyOrNull(newPetition.getBeneficiaryLastName())
-                && !isDobInRange(newPetition.getDobYear(), newPetition.getDobMonth(), newPetition.getDobDay());
+    public boolean validateEntry(Petition petition) {
+
+        validateReturn = isNotEmptyOrNull(petition.getPetitionerFirstName())
+                && isNotEmptyOrNull(petition.getPetitionerLastName())
+                && isNotEmptyOrNull(petition.getaNumber())
+                && isNotEmptyOrNull(petition.getBeneficiaryFirstName())
+                && isNotEmptyOrNull(petition.getBeneficiaryLastName())
+                && !isDobInRange(petition.getDobYear(), petition.getDobMonth(), petition.getDobDay());
+
+        if (validateReturn) {
+            database.addToDatabase(petition);
+        }
 
         return validateReturn;
+    }
+
+    public Petition getPetitionFromDatabase(String aNumber) {
+        for (Petition petition:
+                list) {
+            if (petition.getaNumber().equals(aNumber)) {
+                return petition;
+            }
+        }
+        return null;
     }
 
     public boolean addToWorkflow() {

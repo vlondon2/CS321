@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import src.PNW;
+import src.Petition;
 
 public class TestPNW {
     PNW pnw;
@@ -16,7 +17,8 @@ public class TestPNW {
 
     @Test
     public void testValidateEntry() {
-        boolean result = pnw.validateEntry();
+        Petition petition = new Petition();
+        boolean result = pnw.validateEntry(petition);
 
         assertTrue(result);
     }

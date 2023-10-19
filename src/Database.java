@@ -3,10 +3,10 @@ package src;
 import java.util.ArrayList;
 
 public class Database {
-    private ArrayList<Petition> database;
+    private static ArrayList<Petition> database;
 
     public Database() {
-        database = new ArrayList<>();
+        database = new ArrayList<Petition>();
     }
 
     public void addToDatabase(Petition petition) {
@@ -17,23 +17,7 @@ public class Database {
         return database.remove(petition);
     }
 
-    public boolean checkDatabase(String aNumber) {
-        for (Petition petition:
-             database) {
-            if (petition.getaNumber().equals(aNumber)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public Petition getPetitionFromDatabase(String aNumber) {
-        for (Petition petition:
-             database) {
-            if (petition.getaNumber().equals(aNumber)) {
-                return petition;
-            }
-        }
-        return null;
+    public ArrayList<Petition> getDatabase() {
+        return database;
     }
 }

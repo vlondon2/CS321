@@ -38,8 +38,8 @@ public class DataEntry {
         newPetition.setDobDay(day);
     }
 
-    private boolean checkStatus() {
-        return false;
+    private boolean checkStatus(String aNumber) {
+        return checkStatus(aNumber);
     }
 
     private boolean submitPetition() {

@@ -35,10 +35,12 @@ public class Workflow {
     }
 
     public Queue<String> getReviewQueue() {
-        return reviewQueue;
+        return null;
+        //return reviewQueue;
     }
 
     public Queue<String> getApprovalQueue() {
-        return approvalQueue;
+        return null;
+        //return approvalQueue;
     }
 }

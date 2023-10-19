@@ -30,12 +30,19 @@ public class WorkflowTest {
      *  Test fails if the new queue size does not equal the old queue size plus one.
      */
     @Test
-    public void testAddToReviewQueue() {
+    public void testAddToReviewQueueIncrement() {
         int currentSize = workflow.getReviewQueue().size();
         workflow.addToReviewQueue(newPetition);
         int newSize = workflow.getReviewQueue().size();
 
         assertEquals(currentSize + 1, newSize);
+    }
+
+    @Test
+    public void testAddToReviewQueueReturn() {
+        int result = workflow.addToReviewQueue(newPetition);
+
+        assertEquals(1, result);
     }
 
     /**
@@ -47,12 +54,19 @@ public class WorkflowTest {
      *  Test fails if the new queue size does not equal the old queue size plus one.
      */
     @Test
-    public void testAddToApprovalQueue() {
+    public void testAddToApprovalQueueIncrement() {
         int currentSize = workflow.getApprovalQueue().size();
         workflow.addToApprovalQueue(newPetition);
         int newSize = workflow.getApprovalQueue().size();
 
         assertEquals(currentSize + 1, newSize);
+    }
+
+    @Test
+    public void testAddToApprovalQueueReturn() {
+        int result = workflow.addToApprovalQueue(newPetition);
+
+        assertEquals(1, result);
     }
 
     /**
@@ -67,10 +81,26 @@ public class WorkflowTest {
      *  **Will not work until after add to queue function is complete**
      */
     @Test
-    public void testRemoveFromReviewQueue() {
+    public void testRemoveFromReviewQueueReturnNotNull() {
+        workflow.addToReviewQueue(newPetition);
+        Petition returnResult = workflow.removeFromReviewQueue();
+
+        assertNotNull(returnResult);
+    }
+
+    @Test
+    public void testRemoveFromReviewQueueReturnResult() {
+        workflow.addToReviewQueue(newPetition);
+        Petition returnResult = workflow.removeFromReviewQueue();
+
+        assertEquals(newPetition, returnResult);
+    }
+
+    @Test
+    public void testRemoveFromReviewQueueDecrement() {
         workflow.addToReviewQueue(newPetition);
         int currentSize = workflow.getReviewQueue().size();
-        workflow.removeFromReviewQueue();
+        Petition returnResult = workflow.removeFromReviewQueue();
         int newSize = workflow.getReviewQueue().size();
 
         assertEquals(currentSize - 1, newSize);
@@ -88,13 +118,43 @@ public class WorkflowTest {
      *  **Will not work until after add to queue function is complete**
      */
     @Test
-    public void testRemoveFromApprovalQueue() {
+    public void testRemoveFromApprovalQueueReturnNotNull() {
+        workflow.addToApprovalQueue(newPetition);
+        Petition returnResult = workflow.removeFromApprovalQueue();
+
+        assertNotNull(returnResult);
+    }
+
+    @Test
+    public void testRemoveFromApprovalQueueReturnResult() {
+        workflow.addToApprovalQueue(newPetition);
+        Petition returnResult = workflow.removeFromApprovalQueue();
+
+        assertEquals(newPetition, returnResult);
+    }
+
+    @Test
+    public void testRemoveFromApprovalQueueDecrement() {
         workflow.addToApprovalQueue(newPetition);
         int currentSize = workflow.getApprovalQueue().size();
-        workflow.removeFromApprovalQueue();
+        Petition returnResult = workflow.removeFromApprovalQueue();
         int newSize = workflow.getApprovalQueue().size();
 
         assertEquals(currentSize - 1, newSize);
+    }
+
+    @Test
+    public void voidtestGetReviewQueueNotNull() {
+        Queue<String> queue = workflow.getReviewQueue();
+
+        assertNotNull(queue);
+    }
+
+    @Test
+    public void voidtestGetApprovalQueueNotNull() {
+        Queue<String> queue = workflow.getApprovalQueue();
+
+        assertNotNull(queue);
     }
 }
 
