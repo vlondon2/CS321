@@ -9,10 +9,12 @@ import src.Petition;
 
 public class TestPNW {
     PNW pnw;
+    Petition petition;
 
     @Before
     public void create() {
         pnw = new PNW();
+        petition = new Petition();
     }
 
     @Test
@@ -25,8 +27,13 @@ public class TestPNW {
 
     @Test
     public void testAddToWorkflow() {
-        boolean result = pnw.addToWorkflow();
+        boolean result = pnw.addToWorkflow(petition);
 
         assertTrue(result);
+    }
+
+    @Test
+    public void testCheckDatabase() {
+
     }
 }

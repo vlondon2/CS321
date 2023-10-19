@@ -10,6 +10,7 @@ public class Petition {
     private int dobMonth;
     private int dobDay;
     private int dobYear;
+    private int workflowStatus;
 
     public Petition() {
         this.petitionerFirstName = "";
@@ -20,6 +21,7 @@ public class Petition {
         this.dobMonth = 0;
         this.dobDay = 0;
         this.dobYear = 0;
+        this.workflowStatus = 0;
     }
 
     public void setPetitionerFirstName(String petitionerFirstName) {
@@ -84,5 +86,13 @@ public class Petition {
 
     public int getDobYear() {
         return dobYear;
+    }
+
+    public void setWorkflowStatus(int workflowStatus) {
+        this.workflowStatus = workflowStatus;
+    }
+
+    public int getWorkflowStatus() {
+        return workflowStatus;
     }
 }

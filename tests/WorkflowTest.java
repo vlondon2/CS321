@@ -22,58 +22,79 @@ public class WorkflowTest {
     }
 
     /**
-     * test name:  testAddToReviewQueue()
-     * parameters: none
-     * Notes:
-     *  This test creates a new petition to add to the review queue.
-     *  It stores the size before and after adding object to queue.
+     *  This test stores the size before and after adding object to queue.
      *  Test fails if the new queue size does not equal the old queue size plus one.
      */
     @Test
     public void testAddToReviewQueueIncrement() {
         int currentSize = workflow.getReviewQueue().size();
-        workflow.addToReviewQueue(newPetition);
+        workflow.addToReviewQueue(newPetition.getaNumber());
         int newSize = workflow.getReviewQueue().size();
 
         assertEquals(currentSize + 1, newSize);
     }
 
+    /**
+     *  This test adds a petition to the workflow
+     *  Test fails if not successfully dded to queue
+     */
     @Test
     public void testAddToReviewQueueReturn() {
-        int result = workflow.addToReviewQueue(newPetition);
+        int result = workflow.addToReviewQueue(newPetition.getaNumber());
 
         assertEquals(1, result);
     }
 
     /**
-     * test name:  testAddToRApprovalQueue()
-     * parameters: none
-     * Notes:
-     *  This test creates a new petition to add to the approval queue.
-     *  It stores the size before and after adding object to queue.
+     *  This test stores the size before and after adding object to queue.
      *  Test fails if the new queue size does not equal the old queue size plus one.
      */
     @Test
     public void testAddToApprovalQueueIncrement() {
         int currentSize = workflow.getApprovalQueue().size();
-        workflow.addToApprovalQueue(newPetition);
+        workflow.addToApprovalQueue(newPetition.getaNumber());
         int newSize = workflow.getApprovalQueue().size();
 
         assertEquals(currentSize + 1, newSize);
     }
 
+    /**
+     *  This test adds a petition to the workflow
+     *  Test fails if not successfully dded to queue
+     */
     @Test
     public void testAddToApprovalQueueReturn() {
-        int result = workflow.addToApprovalQueue(newPetition);
+        int result = workflow.addToApprovalQueue(newPetition.getaNumber());
 
         assertEquals(1, result);
     }
 
     /**
-     * test name:  testRemoveFromReviewQueue()
-     * parameters: none
-     * Notes:
-     *  This test creates a new petition to add to the review queue.
+     *  This test adds a new petition to queue.
+     *  Test fails if return from removal function is false.
+     */
+    @Test
+    public void testRemoveFromReviewQueueReturnNotNull() {
+        workflow.addToReviewQueue(newPetition.getaNumber());
+        Petition returnResult = workflow.removeFromReviewQueue();
+
+        assertNotNull(returnResult);
+    }
+
+    /**
+     *  This test adds a new petition to queue.
+     *  Test fails if returned type in not a petition object.
+     */
+    @Test
+    public void testRemoveFromReviewQueueReturnResult() {
+        workflow.addToReviewQueue(newPetition.getaNumber());
+        Petition returnResult = workflow.removeFromReviewQueue();
+
+        assertEquals(newPetition, returnResult);
+    }
+
+    /**
+     *  This test adds a new petition to the queue.
      *  It stores the size after adding the object to the queue.
      *  removeFromReviewQueue() is called, attempting to remove item from queue.
      *  It stores the new size after attempting to remove object from queue.
@@ -81,24 +102,8 @@ public class WorkflowTest {
      *  **Will not work until after add to queue function is complete**
      */
     @Test
-    public void testRemoveFromReviewQueueReturnNotNull() {
-        workflow.addToReviewQueue(newPetition);
-        Petition returnResult = workflow.removeFromReviewQueue();
-
-        assertNotNull(returnResult);
-    }
-
-    @Test
-    public void testRemoveFromReviewQueueReturnResult() {
-        workflow.addToReviewQueue(newPetition);
-        Petition returnResult = workflow.removeFromReviewQueue();
-
-        assertEquals(newPetition, returnResult);
-    }
-
-    @Test
     public void testRemoveFromReviewQueueDecrement() {
-        workflow.addToReviewQueue(newPetition);
+        workflow.addToReviewQueue(newPetition.getaNumber());
         int currentSize = workflow.getReviewQueue().size();
         Petition returnResult = workflow.removeFromReviewQueue();
         int newSize = workflow.getReviewQueue().size();
@@ -107,35 +112,40 @@ public class WorkflowTest {
     }
 
     /**
-     * test name:  testRemoveFromApprovalQueue()
-     * parameters: none
-     * Notes:
-     *  This test creates a new petition to add to the approval queue.
-     *  It stores the size after adding the object to the queue.
-     *  removeFromApprovalQueue() is called, attempting to remove item from queue.
-     *  It stores the new size after attempting to remove object from queue.
-     *  Test fails if new size does not equal old size minus 1.
-     *  **Will not work until after add to queue function is complete**
+     *  This test adds a new petition to queue.
+     *  Test fails if return from removal function is false.
      */
     @Test
     public void testRemoveFromApprovalQueueReturnNotNull() {
-        workflow.addToApprovalQueue(newPetition);
+        workflow.addToApprovalQueue(newPetition.getaNumber());
         Petition returnResult = workflow.removeFromApprovalQueue();
 
         assertNotNull(returnResult);
     }
 
+    /**
+     *  This test adds a new petition to queue.
+     *  Test fails if returned type in not a petition object.
+     */
     @Test
     public void testRemoveFromApprovalQueueReturnResult() {
-        workflow.addToApprovalQueue(newPetition);
+        workflow.addToApprovalQueue(newPetition.getaNumber());
         Petition returnResult = workflow.removeFromApprovalQueue();
 
         assertEquals(newPetition, returnResult);
     }
 
+    /**
+     *  This test adds a new petition to the queue.
+     *  It stores the size after adding the object to the queue.
+     *  removeFromReviewQueue() is called, attempting to remove item from queue.
+     *  It stores the new size after attempting to remove object from queue.
+     *  Test fails if new size does not equal old size minus 1.
+     *  **Will not work until after add to queue function is complete**
+     */
     @Test
     public void testRemoveFromApprovalQueueDecrement() {
-        workflow.addToApprovalQueue(newPetition);
+        workflow.addToApprovalQueue(newPetition.getaNumber());
         int currentSize = workflow.getApprovalQueue().size();
         Petition returnResult = workflow.removeFromApprovalQueue();
         int newSize = workflow.getApprovalQueue().size();
@@ -143,15 +153,23 @@ public class WorkflowTest {
         assertEquals(currentSize - 1, newSize);
     }
 
+    /**
+     *  This test checks the return type.
+     *  Test fails if returned type is null.
+     */
     @Test
-    public void voidtestGetReviewQueueNotNull() {
+    public void testGetReviewQueueNotNull() {
         Queue<String> queue = workflow.getReviewQueue();
 
         assertNotNull(queue);
     }
 
+    /**
+     *  This test checks the return type.
+     *  Test fails if returned type is null.
+     */
     @Test
-    public void voidtestGetApprovalQueueNotNull() {
+    public void testGetApprovalQueueNotNull() {
         Queue<String> queue = workflow.getApprovalQueue();
 
         assertNotNull(queue);
