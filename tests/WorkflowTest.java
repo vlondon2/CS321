@@ -15,7 +15,7 @@ public class WorkflowTest {
     /**
      * Before each test, create a workflow and petition object
      */
-    @Before // create a new workflow object to test with
+    @Before
     public void createObjectsForTests() {
         workflow = new Workflow();
         newPetition = new Petition();
@@ -27,10 +27,16 @@ public class WorkflowTest {
      */
     @Test
     public void testAddToReviewQueueIncrement() {
+        // get current queue size
         int currentSize = workflow.getReviewQueue().size();
+
+        // add to the queue
         workflow.addToReviewQueue(newPetition.getaNumber());
+
+        // get new queue size
         int newSize = workflow.getReviewQueue().size();
 
+        // check if queue size incremented by 1
         assertEquals(currentSize + 1, newSize);
     }
 
@@ -40,8 +46,10 @@ public class WorkflowTest {
      */
     @Test
     public void testAddToReviewQueueReturn() {
+        // get function return value
         int result = workflow.addToReviewQueue(newPetition.getaNumber());
 
+        // check return value
         assertEquals(1, result);
     }
 
@@ -51,10 +59,16 @@ public class WorkflowTest {
      */
     @Test
     public void testAddToApprovalQueueIncrement() {
+        // get current queue size
         int currentSize = workflow.getApprovalQueue().size();
+
+        // add to the queue
         workflow.addToApprovalQueue(newPetition.getaNumber());
+
+        // get new queue size
         int newSize = workflow.getApprovalQueue().size();
 
+        // check if queue size incremented by 1
         assertEquals(currentSize + 1, newSize);
     }
 
@@ -64,8 +78,10 @@ public class WorkflowTest {
      */
     @Test
     public void testAddToApprovalQueueReturn() {
+        // get queue return value
         int result = workflow.addToApprovalQueue(newPetition.getaNumber());
 
+        // check funstion return value
         assertEquals(1, result);
     }
 
@@ -75,9 +91,13 @@ public class WorkflowTest {
      */
     @Test
     public void testRemoveFromReviewQueueReturnNotNull() {
+        // add to queue
         workflow.addToReviewQueue(newPetition.getaNumber());
+
+        // get return object
         Petition returnResult = workflow.removeFromReviewQueue();
 
+        // check if returned value is null
         assertNotNull(returnResult);
     }
 
@@ -87,9 +107,13 @@ public class WorkflowTest {
      */
     @Test
     public void testRemoveFromReviewQueueReturnResult() {
+        //add to queue
         workflow.addToReviewQueue(newPetition.getaNumber());
+
+        // get return object
         Petition returnResult = workflow.removeFromReviewQueue();
 
+        // check if returned object is a petition
         assertEquals(newPetition, returnResult);
     }
 
@@ -103,11 +127,19 @@ public class WorkflowTest {
      */
     @Test
     public void testRemoveFromReviewQueueDecrement() {
+        // add to queue
         workflow.addToReviewQueue(newPetition.getaNumber());
+
+        // get current queue size
         int currentSize = workflow.getReviewQueue().size();
-        Petition returnResult = workflow.removeFromReviewQueue();
+
+        // remove from queue
+        workflow.removeFromReviewQueue();
+
+        // get new queue size
         int newSize = workflow.getReviewQueue().size();
 
+        // check if queue size decrements by 1
         assertEquals(currentSize - 1, newSize);
     }
 
@@ -117,9 +149,13 @@ public class WorkflowTest {
      */
     @Test
     public void testRemoveFromApprovalQueueReturnNotNull() {
+        // add to queue
         workflow.addToApprovalQueue(newPetition.getaNumber());
+
+        // get return object
         Petition returnResult = workflow.removeFromApprovalQueue();
 
+        // checks if return value is null
         assertNotNull(returnResult);
     }
 
@@ -129,9 +165,13 @@ public class WorkflowTest {
      */
     @Test
     public void testRemoveFromApprovalQueueReturnResult() {
+        // add to queue
         workflow.addToApprovalQueue(newPetition.getaNumber());
+
+        // get return object
         Petition returnResult = workflow.removeFromApprovalQueue();
 
+        // check if returned type is Petition object
         assertEquals(newPetition, returnResult);
     }
 
@@ -145,11 +185,19 @@ public class WorkflowTest {
      */
     @Test
     public void testRemoveFromApprovalQueueDecrement() {
+        // add to queue
         workflow.addToApprovalQueue(newPetition.getaNumber());
+
+        // get current queue size
         int currentSize = workflow.getApprovalQueue().size();
-        Petition returnResult = workflow.removeFromApprovalQueue();
+
+        // remove from queue
+        workflow.removeFromApprovalQueue();
+
+        // get new queue size
         int newSize = workflow.getApprovalQueue().size();
 
+        // check if queue size decrements by 1
         assertEquals(currentSize - 1, newSize);
     }
 
@@ -159,8 +207,10 @@ public class WorkflowTest {
      */
     @Test
     public void testGetReviewQueueNotNull() {
+        // get function return
         Queue<String> queue = workflow.getReviewQueue();
 
+        // check if is a queue object
         assertNotNull(queue);
     }
 
@@ -170,8 +220,10 @@ public class WorkflowTest {
      */
     @Test
     public void testGetApprovalQueueNotNull() {
+        // get function return
         Queue<String> queue = workflow.getApprovalQueue();
 
+        // check if is a queue object
         assertNotNull(queue);
     }
 }

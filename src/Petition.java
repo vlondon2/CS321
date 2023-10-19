@@ -12,6 +12,9 @@ public class Petition {
     private int dobYear;
     private int workflowStatus;
 
+    /**
+     * Default constructor
+     */
     public Petition() {
         this.petitionerFirstName = "";
         this.petitionerLastName = "";
@@ -23,6 +26,10 @@ public class Petition {
         this.dobYear = 0;
         this.workflowStatus = 0;
     }
+
+    /**
+     * set and get functions
+     */
 
     public void setPetitionerFirstName(String petitionerFirstName) {
         this.petitionerFirstName = petitionerFirstName;

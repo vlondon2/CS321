@@ -6,8 +6,8 @@ public class PNW {
 
     //private final Petition newPetition;
     private final Workflow workflow;
-    private Database database;
-    private ArrayList<Petition> list;
+    private final Database database;
+    private final ArrayList<Petition> list;
     private boolean validateReturn;
 
     /**
@@ -31,6 +31,7 @@ public class PNW {
         for (Petition petition:
                 list) {
             if (petition.getaNumber().equals(aNumber)) {
+                // if A-Number is found
                 return true;
             }
         }
@@ -46,6 +47,7 @@ public class PNW {
      */
     public boolean validateEntry(Petition petition) {
 
+        // check if entries are valid
         validateReturn = isNotEmptyOrNull(petition.getPetitionerFirstName())
                 && isNotEmptyOrNull(petition.getPetitionerLastName())
                 && isNotEmptyOrNull(petition.getaNumber())
@@ -53,6 +55,7 @@ public class PNW {
                 && isNotEmptyOrNull(petition.getBeneficiaryLastName())
                 && !isDobInRange(petition.getDobYear(), petition.getDobMonth(), petition.getDobDay());
 
+        // if valid, add to database and workflow
         if (validateReturn) {
             database.addToDatabase(petition);
             addToWorkflow(petition);
@@ -71,6 +74,7 @@ public class PNW {
         for (Petition petition:
                 list) {
             if (petition.getaNumber().equals(aNumber)) {
+                // return petition with matching A-Number
                 return petition;
             }
         }
@@ -86,9 +90,11 @@ public class PNW {
     public boolean addToWorkflow(Petition petition) {
         if (validateReturn) {
             if (petition.getWorkflowStatus() == 0) {
+                // add to review queue
                 workflow.addToReviewQueue(petition.getaNumber());
                 return true;
             } else if (petition.getWorkflowStatus() == 1) {
+                // add to approval queue
                 workflow.addToApprovalQueue(petition.getaNumber());
                 return true;
             }
@@ -118,21 +124,26 @@ public class PNW {
      */
     private boolean isDobInRange(int year, int month, int day) {
         if (year < 1920 || year > 2007 || month < 0 || month > 12) {
+            // month or year out of range
             return false;
         }
 
         if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+            // month with 31 days
             return day > 0 && day <= 31;
 
         } else if (month == 2) {
             if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+                // February leap year
                 return day > 0 && day <= 29;
             }
             else {
+                // February not leap year
                 return day > 0 && day <= 28;
             }
         }
         else {
+            // month with 30 days
             return day > 0 && day <= 30;
         }
     }
