@@ -128,6 +128,104 @@ public class TestPNW {
     }
 
     @Test
+    public void testValidateEntryDayOutOfRangeOddMonth() {
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(11);
+        petition.setDobDay(40);
+        petition.setDobYear(1989);
+
+        boolean result = pnw.validateEntry(petition);
+
+        assertFalse(result);
+
+    }
+
+    @Test
+    public void testValidateEntryDayOutOfRangeEvenMonth() {
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(10);
+        petition.setDobDay(40);
+        petition.setDobYear(1989);
+
+        boolean result = pnw.validateEntry(petition);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testValidateEntryYearTooLarge() {
+
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(11);
+        petition.setDobDay(23);
+        petition.setDobYear(10000);
+
+        boolean result = pnw.validateEntry(petition);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testValidateEntryYearTooSmall() {
+
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(11);
+        petition.setDobDay(23);
+        petition.setDobYear(0);
+
+        boolean result = pnw.validateEntry(petition);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testValidateEntryYearIsNegative() {
+
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(11);
+        petition.setDobDay(23);
+        petition.setDobYear(-1800);
+
+        boolean result = pnw.validateEntry(petition);
+
+        assertFalse(result);
+    }
+
+    @
+
+
+
+    @Test
     public void testAddToWorkflowReturnResult() {
         boolean result = pnw.addToWorkflow(petition);
 
