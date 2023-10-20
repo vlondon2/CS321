@@ -6,15 +6,18 @@ import org.junit.Before;
 import org.junit.Test;
 import src.PNW;
 import src.Petition;
+import src.Database;
 
 public class TestPNW {
     PNW pnw;
     Petition petition;
+    Database database;
 
     @Before
     public void create() {
         pnw = new PNW();
         petition = new Petition();
+        database = new Database();
     }
 
     /**
@@ -221,10 +224,73 @@ public class TestPNW {
         assertFalse(result);
     }
 
-    @
+    @Test
+    public void testValidateEntryMonthIsNegative() {
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(-11);
+        petition.setDobDay(23);
+        petition.setDobYear(1989);
+
+        boolean result = pnw.validateEntry(petition);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testValidateEntryDayIsNegative() {
+        petition = new Petition();
+
+        petition.setBeneficiaryFirstName("John");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("Doe");
+        petition.setDobMonth(11);
+        petition.setDobDay(-23);
+        petition.setDobYear(1989);
+
+        boolean result = pnw.validateEntry(petition);
+
+        assertFalse(result);
+    }
 
 
+    @Test
+    public void testValidateEntryStringContainsNonAlphabetic() {
+        petition = new Petition();
 
+        petition.setBeneficiaryFirstName("34;82");
+        petition.setBeneficiaryLastName("Doe");
+        petition.setANumber("001");
+        petition.setPetitionerFirstName("Jane");
+        petition.setPetitionerLastName("D6[[e");
+        petition.setDobMonth(-11);
+        petition.setDobDay(23);
+        petition.setDobYear(1989);
+
+        boolean result = pnw.validateEntry(petition);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testGetPetitionFromDatabase(){
+        petition = new Petition();
+        database = new Database();
+
+        petition.setANumber("001");
+        database.addToDatabase(petition);
+
+        boolean result = pnw.getPetitionFromDatabase("001").equals(petition);
+
+        assertTrue(result);
+    }
     @Test
     public void testAddToWorkflowReturnResult() {
         boolean result = pnw.addToWorkflow(petition);
