@@ -53,7 +53,7 @@ public class PNW {
                 && isNotEmptyOrNull(petition.getaNumber())
                 && isNotEmptyOrNull(petition.getBeneficiaryFirstName())
                 && isNotEmptyOrNull(petition.getBeneficiaryLastName())
-                && !isDobInRange(petition.getDobYear(), petition.getDobMonth(), petition.getDobDay());
+                && isDobInRange(petition.getDobYear(), petition.getDobMonth(), petition.getDobDay());
 
         // if valid, add to database and workflow
         if (validateReturn) {
