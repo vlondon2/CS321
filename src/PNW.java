@@ -27,7 +27,8 @@ public class PNW {
      * @param aNumber holds the A-Number to check
      * @return true if found, false if not found
      */
-    public boolean checkDatabase(String aNumber) {
+    public Boolean checkDatabase(String aNumber) {
+        /*
         for (Petition petition:
                 databaseList) {
             if (petition.getaNumber().equals(aNumber)) {
@@ -35,7 +36,8 @@ public class PNW {
                 return true;
             }
         }
-        return false;
+         */
+        return null;
     }
 
     /**
@@ -45,8 +47,8 @@ public class PNW {
      * @param petition holds the petition that needs validated
      * @return returns true if petition passes validation
      */
-    public boolean validateEntry(Petition petition) {
-
+    public Boolean validateEntry(Petition petition) {
+/*
         // check if entries are valid
         validateReturn = isNotEmptyOrNull(petition.getPetitionerFirstName())
                 && isNotEmptyOrNull(petition.getPetitionerLastName())
@@ -62,6 +64,9 @@ public class PNW {
         }
 
         return validateReturn;
+
+ */
+        return null;
     }
 
     /**
@@ -71,6 +76,7 @@ public class PNW {
      * @return returns the petition with matching A-Number
      */
     public Petition getPetitionFromDatabase(String aNumber) {
+        /*
         for (Petition petition:
                 databaseList) {
             if (petition.getaNumber().equals(aNumber)) {
@@ -78,6 +84,8 @@ public class PNW {
                 return petition;
             }
         }
+
+         */
         return null;
     }
 
@@ -87,7 +95,8 @@ public class PNW {
      * @param petition petition to add to workflow
      * @return returns true if added successfully
      */
-    public boolean addToWorkflow(Petition petition) {
+    public Boolean addToWorkflow(Petition petition) {
+        /*
         if (validateReturn) {
             if (petition.getWorkflowStatus() == 0) {
                 // add to review queue
@@ -100,7 +109,9 @@ public class PNW {
             }
         }
 
-        return false;
+         */
+
+        return null;
     }
 
     /**
@@ -109,8 +120,9 @@ public class PNW {
      * @param string string to check
      * @return returns true if not null or empty
      */
-    private boolean isNotEmptyOrNull(String string) {
-        return string != null && !string.isEmpty();
+    private Boolean isNotEmptyOrNull(String string) {
+        //return string != null && !string.isEmpty();
+        return null;
     }
 
     /**
@@ -122,7 +134,8 @@ public class PNW {
      * @param day holds day value
      * @return returns true if year, month and day are within range
      */
-    private boolean isDobInRange(int year, int month, int day) {
+    private Boolean isDobInRange(int year, int month, int day) {
+        /*
         if (year < 1920 || year > 2007 || month < 0 || month > 12) {
             // month or year out of range
             return false;
@@ -146,6 +159,9 @@ public class PNW {
             // month with 30 days
             return day > 0 && day <= 30;
         }
+
+         */
+        return null;
     }
 
     public static void main(String[] args) {
