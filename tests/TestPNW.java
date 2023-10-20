@@ -18,8 +18,8 @@ public class TestPNW {
     }
 
     /**
-     * This test checks the return value of the validation function.
-     * Fails if function returns
+     * This test checks the return value for ValidateEntry()
+     * if the data entered in correct.
      */
     @Test
     public void testValidateEntryCorrectData() {
@@ -39,6 +39,10 @@ public class TestPNW {
         assertTrue(result);
     }
 
+    /**
+     * This test checks the return value for ValidateEntry()
+     * if the 29th of February is out of range for a non leap year.
+     */
     @Test
     public void testValidateEntryDayOutOfRangeNonLeapYear() {
         petition = new Petition();
@@ -57,6 +61,10 @@ public class TestPNW {
         assertFalse(result);
     }
 
+    /**
+     * This test checks the return value for ValidateEntry()
+     * if the 29th in February is in range for a leap year.
+     */
     @Test
     public void testValidateEntryDayInRangeLeapYear() {
         petition = new Petition();
@@ -75,6 +83,10 @@ public class TestPNW {
         assertTrue(result);
     }
 
+    /**
+     * This test checks the return value for ValidateEntry()
+     * if a string entry is empty.
+     */
     @Test
     public void testValidateEntryMissingName() {
         petition = new Petition();
@@ -93,6 +105,10 @@ public class TestPNW {
         assertFalse(result);
     }
 
+    /**
+     * This test checks the return value for ValidateEntry()
+     * if the month is out of range.
+     */
     @Test
     public void testValidateEntryMonthOutOfRange() {
         petition = new Petition();
