@@ -17,8 +17,8 @@ public class Database {
      *
      * @param petition petition to add
      */
-    public void addToDatabase(Petition petition) {
-        database.add(petition);
+    public boolean addToDatabase(Petition petition) {
+        return database.add(petition);
     }
 
     /**

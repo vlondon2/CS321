@@ -18,7 +18,7 @@ public class TestPNW {
     }
 
     @Test
-    public void testValidateEntry() {
+    public void testValidateEntryReturnResult() {
         Petition petition = new Petition();
         boolean result = pnw.validateEntry(petition);
 
@@ -26,7 +26,7 @@ public class TestPNW {
     }
 
     @Test
-    public void testAddToWorkflow() {
+    public void testAddToWorkflowReturnResult() {
         boolean result = pnw.addToWorkflow(petition);
 
         assertTrue(result);

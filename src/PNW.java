@@ -7,7 +7,7 @@ public class PNW {
     //private final Petition newPetition;
     private final Workflow workflow;
     private final Database database;
-    private final ArrayList<Petition> list;
+    private final ArrayList<Petition> databaseList;
     private boolean validateReturn;
 
     /**
@@ -17,7 +17,7 @@ public class PNW {
         //this.newPetition = new Petition();
         this.workflow = new Workflow();
         this.database = new Database();
-        this.list = database.getDatabase();
+        this.databaseList = database.getDatabase();
     }
 
     /**
@@ -29,7 +29,7 @@ public class PNW {
      */
     public boolean checkDatabase(String aNumber) {
         for (Petition petition:
-                list) {
+                databaseList) {
             if (petition.getaNumber().equals(aNumber)) {
                 // if A-Number is found
                 return true;
@@ -72,7 +72,7 @@ public class PNW {
      */
     public Petition getPetitionFromDatabase(String aNumber) {
         for (Petition petition:
-                list) {
+                databaseList) {
             if (petition.getaNumber().equals(aNumber)) {
                 // return petition with matching A-Number
                 return petition;

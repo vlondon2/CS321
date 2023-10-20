@@ -8,7 +8,7 @@ import src.Workflow;
 
 import java.util.Queue;
 
-public class WorkflowTest {
+public class TestWorkflow {
     private Workflow workflow;
     private Petition newPetition;
 
