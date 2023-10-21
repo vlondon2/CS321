@@ -8,7 +8,12 @@ import src.Workflow;
 
 import java.util.Queue;
 
-public class TestWorkflow {
+/**
+ * This is a test class for the Workflow object.
+ *
+ * @author Scott Roszel
+ */
+public class WorkflowTest {
     private Workflow workflow;
     private Petition newPetition;
 

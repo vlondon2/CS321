@@ -2,9 +2,14 @@ package src;
 
 import java.util.*;
 
+/**
+ * This is the main business object class. It holds the workflow and database objects and is responsible for
+ * adding and retrieving from the workflow and database as well as validating that the data is correct.
+ *
+ * @author Scott Roszel
+ */
 public class PNW {
 
-    //private final Petition newPetition;
     private final Workflow workflow;
     private final Database database;
     private final ArrayList<Petition> databaseList;

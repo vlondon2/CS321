@@ -1,5 +1,11 @@
 package src;
 
+/**
+ * The DataEntry class is responsible for checking the database for existing workers and entering petition data for
+ * new non-immigrant workers.
+ *
+ * @author Scott Roszel
+ */
 public class DataEntry {
     private Petition newPetition;
     private PNW pnw;

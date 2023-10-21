@@ -8,7 +8,12 @@ import src.PNW;
 import src.Petition;
 import src.Database;
 
-public class TestPNW {
+/**
+ * This is a test class for the PNW object.
+ *
+ * @author Scott Roszel & Victor Londono
+ */
+public class PNWTest {
     PNW pnw;
     Petition petition;
     Database database;

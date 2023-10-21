@@ -3,10 +3,18 @@ package src;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * This class is the workflow for the system. It holds two queues, one for review and one for approval.
+ *
+ * @author Scott Roszel
+ */
 public class Workflow {
     private Queue<String> reviewQueue;
     private Queue<String> approvalQueue;
 
+    /**
+     * Default constructor
+     */
     public Workflow() {
         reviewQueue = new LinkedList<>();
         approvalQueue = new LinkedList<>();

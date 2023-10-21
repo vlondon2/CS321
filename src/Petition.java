@@ -1,7 +1,13 @@
 package src;
 
+/**
+ * The Petition class represents a data structure for storing data for a petition.
+ *
+ * @author Scott Roszel
+ */
 public class Petition {
 
+    // Data fields for petitioner and beneficiary details, DOB, and workflow status.
     private String petitionerFirstName;
     private String petitionerLastName;
     private String aNumber;
@@ -28,7 +34,7 @@ public class Petition {
     }
 
     /**
-     * set and get functions
+     * Setters and getters for the Petition fields.
      */
 
     public void setPetitionerFirstName(String petitionerFirstName) {

@@ -2,6 +2,13 @@ package src;
 
 import java.util.ArrayList;
 
+/**
+ * The Database class represents a simple database for storing/managing petitions
+ * using an ArrayList. It allows you to add and remove petitions and provides access
+ * to the stored data.
+ *
+ * @author Scott Roszel
+ */
 public class Database {
     private static ArrayList<Petition> database;
 
